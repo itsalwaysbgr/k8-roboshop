@@ -4,12 +4,12 @@ metadata:
   name: catalogue
   namespace: roboshop
   labels:
-    component: config
-    env: dev
+    component: catalogue
+    project: roboshop
+    tier: app
 data:
-  COURSE: "DevOps with AWS"
-  DURATION: "120HRS"
-  TRAINER: "SIVAKUMAR REDDY M"
+  MONGO: "true"
+  MONGO_URL: "mongodb://mongodb:27017/catalogue"
 
 ---
 
@@ -43,6 +43,9 @@ spec:
       containers:
       - name: catalogue
         image: joindevops/catalogue:v1
+        envFrom:
+          - configMapRef:
+              name: catalogue
 
 ---
 
